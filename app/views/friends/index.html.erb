@@ -1,0 +1,33 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Friends" %>
+
+<h1>Friends List</h1>
+
+<div id="friends">
+  <table class="table table-dark table-hover">
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Twitter</th>
+      </tr>
+    </thead>
+    <tbody>
+  <% @friends.each do |friend| %>
+    <tr>
+      <%= render partial: 'friend', locals: { friend: friend } %>
+      <td><%= friend.firstName %></td>
+      <td><%= friend.lastName %></td>
+      <td><%= friend.email %></td>
+      <td><%= friend.phone %></td>
+      <td><%= friend.twitter %></td>
+      <td><%= link_to "Show this friend", friend %></td>
+    </tr>
+  <% end %>
+  </table>
+</div>
+
+<%= link_to "New friend", new_friend_path %>
